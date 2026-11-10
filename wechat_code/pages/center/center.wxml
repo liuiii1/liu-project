@@ -1,0 +1,99 @@
+<wxs src="../../utils/formatMoney.wxs" module="fm" />
+<view class="page">
+
+  <!-- 顶部渐变背景 + 用户卡片 -->
+  <!-- <view class="hero-bg"></view> -->
+
+  <!-- 未登录状态 -->
+  <view wx:if="{{!userInfo.id}}" class="login-card" bind:tap="tologin">
+    <view class="avatar-wrap">
+      <view class="avatar-placeholder iconfont icon-yonghu"></view>
+    </view>
+    <view class="login-text">
+      <view class="login-title">点我登录 / 注册</view>
+      <view class="login-sub">登录后享专属权益 💚</view>
+    </view>
+    <view class="login-arrow">›</view>
+  </view>
+
+  <!-- 已登录：用户信息卡 -->
+  <view wx:else class="profile-card">
+    <view class="profile-top">
+      <view class="avatar-wrap big" bind:tap="toDetail">
+        <image class="avatar-img" src="{{baseURL+avatarurl}}"></image>
+      </view>
+      <view class="profile-info" bind:tap="toDetail">
+        <view class="profile-name">
+          <text wx:if="{{nickname==userInfo.userAccount}}">{{userInfo.userAccount}}</text>
+          <text wx:if="{{nickname==userInfo.account}}">{{userInfo.account}}</text>
+          <view class="vip-tag" wx:if="{{userInfo.vip == '是'}}">VIP</view>
+        </view>
+        <view class="profile-edit">点击编辑资料 ›</view>
+      </view>
+      <view class="setting-btn iconfont icon-shezhi1" bind:tap="toDetail"></view>
+    </view>
+
+    <!-- 数据统计行 -->
+    <view class="stats-row">
+      <view class="stat-item">
+        <view class="stat-num">¥{{fm.f(userInfo.money)}}</view>
+        <view class="stat-label">账户余额</view>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <view class="stat-num">{{userInfo.jf || 0}}</view>
+        <view class="stat-label">积分</view>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <view class="stat-num">0</view>
+        <view class="stat-label">优惠券</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷功能网格 -->
+  <view class="grid-card" wx:if="{{userInfo.id}}">
+    <!-- 固定 5 项：充值 / 收藏 / 地址 / 订单 / 密码 -->
+    <view class="grid-item" bind:tap="userRecharge">
+      <image class="grid-img" src="/images/充值.png"></image>
+      <view class="grid-label">用户充值</view>
+    </view>
+    <view class="grid-item" bind:tap="storeUp">
+      <image class="grid-img" src="/images/收藏.png"></image>
+      <view class="grid-label">我的收藏</view>
+    </view>
+    <view class="grid-item" bind:tap="address">
+      <image class="grid-img" src="/images/地址.png"></image>
+      <view class="grid-label">收货地址</view>
+    </view>
+    <view class="grid-item" bind:tap="orderPage">
+      <image class="grid-img" src="/images/_订单.png"></image>
+      <view class="grid-label">订单管理</view>
+    </view>
+    <block wx:for="{{backMenuList}}" wx:key="index">
+      <view class="grid-item" bindtap="optionsTap" data-item="{{item}}">
+        <image wx:if="{{item.image}}" class="grid-img" src="{{item.image}}"></image>
+        <view wx:else class="grid-icon iconfont {{item.fontClass}}"></view>
+        <view class="grid-label">{{item.menu}}</view>
+      </view>
+    </block>
+    <view class="grid-item" bind:tap="uppdatePassword">
+      <view class="grid-icon iconfont icon-suoding1"></view>
+      <view class="grid-label">密码修改</view>
+    </view>
+  </view>
+
+  <!-- 弹窗：修改密码 -->
+  <com-popup id="bottomFrame" className="buttom-popup">
+    <view class="popup-box">
+      <view class="popup-title">修改密码</view>
+      <view class="popup-close" bind:tap="cancelShow">✕</view>
+      <input class="popup-input" model:value="{{passWorded}}" type="password" placeholder="原密码" placeholder-class="ph"/>
+      <input class="popup-input" type="password" model:value="{{newPassword}}" placeholder="新密码" placeholder-class="ph"/>
+      <input class="popup-input" model:value="{{confirmPassword}}" type="password" placeholder="确认新密码" placeholder-class="ph"/>
+      <button class="popup-btn" bindtap="resetpasswordBtn">确认修改</button>
+    </view>
+  </com-popup>
+
+</view>

@@ -2,11 +2,11 @@
 .env
 .env.*
 # 保留模板示例文件（可选，!代表不忽略）
-# !.env.example
+!.env.example
+!.env.*.example
 
 # ========== node依赖包（你截图大量acorn、eslint这类文件都在这里）==========
 node_modules/
-package-lock.json
 npm-debug.log*
 yarn-error.log*
 

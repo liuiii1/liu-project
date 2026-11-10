@@ -1,0 +1,50 @@
+
+<view class="addr-detail-page">
+  <!-- 表单卡片 -->
+  <view class="form-card">
+    <!-- 姓名 -->
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-ico">👤</text>
+        <text>收货人</text>
+      </view>
+      <input class="form-input" type="text" placeholder="请输入收货人姓名"
+             value="{{name}}" bindinput="bindName" maxlength="20" />
+    </view>
+
+    <!-- 电话 -->
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-ico">📞</text>
+        <text>手机号</text>
+      </view>
+      <input class="form-input" type="number" placeholder="请输入手机号码"
+             value="{{phone}}" bindinput="bindPhone" maxlength="11" />
+    </view>
+
+    <!-- 详细地址 -->
+    <view class="form-item form-item-col">
+      <view class="form-label">
+        <text class="label-ico">📍</text>
+        <text>详细地址</text>
+      </view>
+      <textarea class="form-textarea" placeholder="请输入详细收货地址"
+                value="{{addressName}}" bindinput="bindAddress" maxlength="200"
+                auto-height />
+    </view>
+  </view>
+
+  <!-- 设为默认 -->
+  <view class="default-row">
+    <view class="default-left">
+      <text class="default-ico">⭐</text>
+      <text class="default-text">设为默认地址</text>
+    </view>
+    <switch checked="{{isdefault}}" bindchange="switch1Change" color="#2f7a3d" />
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="save-btn-wrap">
+    <view class="save-btn" bindtap="saveTap">保存地址</view>
+  </view>
+</view>

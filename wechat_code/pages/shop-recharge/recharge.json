@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+  },
+  "navigationBarTitleText": "用户充值",
+  "navigationBarBackgroundColor":"#2f7a3d",
+  "navigationBarTextStyle": "white"
+}

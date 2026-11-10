@@ -1,0 +1,324 @@
+/* ============================================================
+   我的页面 · 田园绿设计系统 v2
+   ============================================================ */
+.page {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- 顶部背景 ---------- */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 400rpx;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 0%, rgba(183, 213, 115, 0.4) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(124, 191, 139, 0.3) 0%, transparent 50%),
+    linear-gradient(160deg, #358a48 0%, #2f7a3d 50%, #256b33 100%);
+  z-index: 0;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40rpx;
+  background: linear-gradient(180deg, transparent, rgba(243, 247, 240, 0.3));
+}
+
+/* ---------- 登录卡片（未登录） ---------- */
+.login-card {
+  position: relative;
+  z-index: 1;
+  margin: 130rpx 24rpx 0;
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: 40rpx 32rpx;
+  display: flex;
+  align-items: center;
+  transition: transform var(--dur-base) cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow var(--dur-base) ease;
+}
+
+.login-card:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-lg);
+}
+
+.avatar-wrap {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--green-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-wrap.big {
+  width: 120rpx;
+  height: 120rpx;
+  border: 4rpx solid #ffffff;
+  box-shadow: 0 6rpx 20rpx rgba(47, 122, 61, 0.25);
+}
+
+.avatar-placeholder {
+  font-size: 48rpx;
+  color: var(--green-500);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+
+.login-text {
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.login-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.login-sub {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: var(--ink-2);
+}
+
+.login-arrow {
+  font-size: 36rpx;
+  color: var(--ink-3);
+  font-weight: 300;
+  transition: transform var(--dur-fast) ease;
+}
+
+.login-card:active .login-arrow {
+  transform: translateX(6rpx);
+}
+
+/* ---------- 用户信息卡（已登录） ---------- */
+.profile-card {
+  position: relative;
+  z-index: 1;
+  margin: 130rpx 24rpx 0;
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: 40rpx 28rpx 24rpx;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+}
+
+.profile-info {
+  flex: 1;
+  margin-left: 24rpx;
+  min-width: 0;
+}
+
+.profile-name {
+  display: flex;
+  align-items: center;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.vip-tag {
+  margin-left: 16rpx;
+  padding: 4rpx 16rpx;
+  background: linear-gradient(90deg, #e9d38a, #c99a2e);
+  color: #ffffff;
+  font-size: 20rpx;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  line-height: 1.4;
+  box-shadow: 0 4rpx 12rpx rgba(201, 154, 46, 0.3);
+}
+
+.profile-edit {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: var(--ink-3);
+}
+
+.setting-btn {
+  font-size: 40rpx;
+  color: var(--ink-3);
+  padding: 8rpx;
+  transition: transform var(--dur-fast) ease;
+}
+
+.setting-btn:active {
+  transform: rotate(30deg);
+}
+
+/* ---------- 数据统计 ---------- */
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 32rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid var(--green-50);
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+  transition: transform var(--dur-base) ease;
+}
+
+.stat-item:active {
+  transform: scale(0.95);
+}
+
+.stat-num {
+  font-size: 36rpx;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--green-600), var(--green-800));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+
+.stat-label {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: var(--ink-3);
+}
+
+.stat-divider {
+  width: 1rpx;
+  background: var(--green-100);
+  align-self: center;
+  height: 60rpx;
+}
+
+/* ---------- 功能网格 ---------- */
+.grid-card {
+  position: relative;
+  z-index: 1;
+  margin: 20rpx 24rpx;
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: 32rpx 16rpx 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 24rpx;
+  transition: transform var(--dur-fast) ease;
+}
+
+.grid-item:active {
+  transform: scale(0.92);
+}
+
+.grid-img {
+  width: 64rpx;
+  height: 64rpx;
+  object-fit: contain;
+  margin-bottom: 12rpx;
+}
+
+.grid-icon {
+  width: 64rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: var(--green-700);
+  background: linear-gradient(135deg, var(--green-50), var(--green-100));
+  border-radius: var(--radius-md);
+  margin-bottom: 12rpx;
+}
+
+.grid-label {
+  font-size: 24rpx;
+  color: var(--ink-2);
+  line-height: 1.2;
+}
+
+/* ---------- 我的订单 ---------- */
+.order-section {
+  position: relative;
+  z-index: 1;
+  margin: 20rpx 24rpx;
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: 28rpx;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.section-title::before {
+  content: '';
+  width: 8rpx;
+  height: 30rpx;
+  border-radius: 6rpx;
+  background: linear-gradient(180deg, var(--green-500), var(--green-800));
+  margin-right: 14rpx;
+}
+
+.section-more {
+  font-size: 24rpx;
+  color: var(--ink-3);
+}
+
+.order-tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 24rpx;
+  padding: 8rpx 0 16rpx;
+}
+
+.order-tab {
+  flex: 1;
+  text-align: center;
+  font-size: 24rpx;
+  color: var(--ink-2);
+  padding: 10rpx 0;
+  transition: all var(--dur-base) ease;
+}
+
+.order-tab:active {
+  color: var(--green-700);
+  transform: scale(0.95);
+}

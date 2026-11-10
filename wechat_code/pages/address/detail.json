@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "com-popup": "/component/com-popup/com-popup"
+  },
+  "navigationBarTitleText": "地址详情",
+  "navigationBarBackgroundColor":"#2f7a3d",
+  "navigationBarTextStyle": "white"
+}

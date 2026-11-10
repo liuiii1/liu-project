@@ -1,0 +1,33 @@
+# Environment variables and local credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+.npmrc
+.pypirc
+**/project.private.config.json
+**/tmp_cookie.txt
+**/tmp_token.txt
+
+# Dependency and generated files
+node_modules/
+target/
+dist/
+build/
+logs/
+npm-debug.log*
+yarn-error.log*
+
+# Local certificates and keys
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

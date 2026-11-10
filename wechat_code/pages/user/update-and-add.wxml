@@ -1,0 +1,53 @@
+
+<view class="update-container">
+<view class="content">
+<view class="form-box">
+<view class="item-box">
+<view class="item-label">用户账号</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.userAccount==true}}"  placeholder="用户账号" model:value="{{userAccount}}" />
+</view>
+<view class="item-box">
+<view class="item-label">用户密码</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.userPassword==true}}"  placeholder="用户密码" model:value="{{userPassword}}" />
+</view>
+<view class="item-box">
+<view class="item-label">用户姓名</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.userName==true}}"  placeholder="用户姓名" model:value="{{userName}}" />
+</view>
+<view class="item-box"    bindtap="uploadheadportrait">
+<view   class="item-label">头像</view>
+<image  src="{{headportraitPath?headportraitPath:imgIcon}}" mode="aspectFill"  class="item-img"></image>
+</view>
+<view class="item-box">
+<view class="item-label" >性别</view>
+<picker   class="down-item-picker"     bindchange="genderChange" value="{{genderIndex}}"  range="{{genderList}}">
+<view class="down-item-picker-text">
+{{genderIndex||genderIndex==0?genderList[genderIndex]:"请选择性别"}}
+</view>
+</picker>
+</view>
+<view class="item-box">
+<view class="item-label">电话号码</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.phoneNumber==true}}"  placeholder="电话号码" model:value="{{phoneNumber}}" />
+</view>
+<view class="item-box">
+<view class="item-label">余额</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.money==true}}"  placeholder="余额" model:value="{{money}}" />
+</view>
+
+</view>
+
+
+<view class="btn-box">
+<button     class="submit-btn" bindtap="submit">提交</button>
+</view>
+
+
+</view>
+
+</view>

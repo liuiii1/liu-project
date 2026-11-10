@@ -1,0 +1,44 @@
+/* ============================================================
+   资讯详情页 · 田园绿设计系统
+   ============================================================ */
+page {
+  background: var(--bg);
+}
+.content {
+  padding: 24rpx;
+}
+.container {
+  background: #ffffff;
+  border-radius: 28rpx;
+  box-shadow: 0 8rpx 32rpx rgba(46, 92, 56, 0.07);
+  padding: 40rpx 32rpx 48rpx;
+}
+.container > view:first-child {
+  color: var(--ink) !important;
+  padding-bottom: 24rpx;
+  border-bottom: 1rpx solid var(--line);
+  margin-bottom: 8rpx;
+}
+.detail-list-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid var(--line);
+}
+.detail-list-item:last-child {
+  border-bottom: none;
+}
+.lable {
+  flex-shrink: 0;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--green-700);
+  margin-right: 16rpx;
+}
+.introduction {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--ink-2);
+  line-height: 1.8;
+  word-break: break-all;
+}

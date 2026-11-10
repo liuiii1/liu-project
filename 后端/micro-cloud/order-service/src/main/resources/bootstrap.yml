@@ -1,0 +1,80 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 9084
+
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.241.100:8848
+      config:
+        server-addr: 192.168.241.100:8848
+        file-extension: yaml
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/db_project?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 123456
+  servlet:
+    multipart:
+      max-file-size: 300MB
+      max-request-size: 300MB
+  # ===== RabbitMQ =====
+  # 延迟队列（TTL+DLX 模式，无需 rabbitmq-delayed-message-exchange 插件）
+  # AMQP 默认端口 5672；管理后台 15673（你截图里看到的那个）
+  rabbitmq:
+    host: 192.168.241.100
+    port: 5673
+    username: admin2
+    password: 123123
+    virtual-host: /
+    # 确保消费者手动 ack 或自动 ack；这里用默认自动 ack
+    listener:
+      simple:
+        acknowledge-mode: auto
+        prefetch: 10
+      # 延迟队列消费者不需要并发
+      default:
+        concurrency: 1
+
+# ===== OpenFeign + Ribbon 超时/重试 =====
+# 默认 Ribbon 会对失败请求重试 3 次，慢服务会导致扣余额/扣库存被重复执行。
+# 写操作幂等性差，必须全局禁用重试；读操作如需重试可在客户端 FeignClient 上加 @Retryable。
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 3000
+        readTimeout: 5000
+        # 禁用 OkHttp/Apache 的重试
+        retryable: false
+  # Hoxton.SR1 使用 Ribbon 做负载均衡，这里用 Ribbon 配置禁用重试、缩短连接超时
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 5000
+  MaxAutoRetries: 0           # 首次失败后不再重试
+  MaxAutoRetriesNextServer: 0 # 不尝试下一个实例
+  OkToRetryOnAllOperations: false
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  typeAliasesPackage: com.cl.entity
+  global-config:
+    id-type: 1
+    field-strategy: 1
+    db-column-underline: true
+    refresh-mapper: true
+    logic-delete-value: -1
+    logic-not-delete-value: 0
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+

@@ -1,0 +1,42 @@
+// WXS 金额格式化工具：保留两位小数
+// 在 WXML 里引入方式：
+//   <wxs src="../../utils/formatMoney.wxs" module="fm" />
+//   <text>{{fm.f(item.price)}}</text>
+//   <text>{{fm.fMul(item.price, item.buynumber)}}</text>  -- 单价 x 数量
+//   <text>{{fm.fAdd(item.price, item.price2)}}</text>    -- 两数相加
+
+function formatMoney(val) {
+    if (val === null || val === undefined || val === '') return '0.00';
+    var n = parseFloat(val);
+    if (isNaN(n)) return '0.00';
+    n = Math.round(n * 100) / 100;
+    var s = n.toString();
+    var dot = s.indexOf('.');
+    if (dot === -1) {
+        return s + '.00';
+    }
+    var decimals = s.substring(dot + 1);
+    if (decimals.length === 1) {
+        return s + '0';
+    }
+    return s;
+}
+
+// 单价 * 数量 后格式化
+function fMul(price, qty) {
+    if (price === null || price === undefined || qty === null || qty === undefined) return '0.00';
+    var n = parseFloat(price) * parseInt(qty);
+    return formatMoney(n);
+}
+
+// 两数相加后格式化
+function fAdd(a, b) {
+    return formatMoney(parseFloat(a) + parseFloat(b));
+}
+
+module.exports = {
+    f: formatMoney,
+    formatMoney: formatMoney,
+    fMul: fMul,
+    fAdd: fAdd
+};

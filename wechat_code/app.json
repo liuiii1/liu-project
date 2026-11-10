@@ -1,0 +1,108 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/forget/forget",
+  "pages/user/register",
+
+  "pages/shop-order/orders-confirm",
+  "pages/shop-order/orders-list",
+  "pages/shop-order/logistics",
+  "pages/shop-recharge/recharge",
+  "pages/shop-cart/shop-cart",
+  "pages/shop-recharge/pay-confirm",
+  "pages/address/list",
+  "pages/address/detail",
+    "pages/vip-payconfirm/vip-payconfirm",
+    "pages/vip-payconfirm/vip-paysuccess",
+    "pages/user-info/user-info",
+    "pages/reply/reply",
+    "component/dateTimePicker/dateTime",
+    "component/timetable/timetable",
+    "component/com-date/com-date",
+    "component/com-editor/com-editor",
+    "component/comment-item/comment-item",
+    "component/com-popup/com-popup",
+    "component/com-video/com-video",
+    "component/com-manySel/com-manySel",
+    "component/tree-menu/tree-menu",
+
+  "pages/news/detail",
+  "pages/news/list",
+   "pages/user/detail",
+    "pages/user/update-and-add",
+    "pages/user/list",
+   "pages/supplier/detail",
+    "pages/supplier/update-and-add",
+    "pages/supplier/list",
+   "pages/productcategory/detail",
+    "pages/productcategory/update-and-add",
+    "pages/productcategory/list",
+   "pages/agriculturalproductinformation/detail",
+    "pages/agriculturalproductinformation/update-and-add",
+    "pages/agriculturalproductinformation/list",
+  "pages/storeup/list",
+
+   "pages/discussagriculturalproductinformation/detail",
+    "pages/discussagriculturalproductinformation/update-and-add",
+    "pages/discussagriculturalproductinformation/list",
+    "pages/center/center"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的"
+    }
+  },
+  "requiredPrivateInfos": [ "getLocation" ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2f7a3d",
+    "navigationBarTitleText": "农产品直供平台",
+    "navigationBarTextStyle": "white"
+  },
+
+  "tabBar": {
+    "selectedColor": "#2f7a3d",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/static/index.png",
+        "selectedIconPath": "/static/index1.png",
+        "text": "首页"
+      },
+
+
+
+
+
+
+
+  {
+  "pagePath": "pages/agriculturalproductinformation/list",
+    "iconPath": "/static/tabs/1/icon1.png",
+    "selectedIconPath": "/static/tabs/1/icon1_act.png",
+      "text": "农产品信息"
+  },
+
+
+
+  {
+    "pagePath": "pages/shop-cart/shop-cart",
+    "iconPath": "static/tabs/1/cart.png",
+    "selectedIconPath": "static/tabs/1/cart1.png",
+    "text": "购物车"
+  },
+
+
+
+{
+"pagePath": "pages/center/center",
+"iconPath": "static/tabs/1/mine.png",
+"selectedIconPath": "static/tabs/1/mine1.png",
+"text": "我的"
+}
+
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,2 @@
+/* 供应商新增/编辑 · 引用后台共享样式 */
+@import "/styles/crud.wxss";

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cl.dao.AgriculturalproductinformationDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.cl.entity.AgriculturalproductinformationEntity" id="agriculturalproductinformationMap">
+        <result property="productname" column="productname"/>
+        <result property="productcategory" column="productcategory"/>
+        <result property="image" column="image"/>
+        <result property="specification" column="specification"/>
+        <result property="placeofproduction" column="placeofproduction"/>
+        <result property="productdetails" column="productdetails"/>
+        <result property="account" column="account"/>
+        <result property="name" column="name"/>
+        <result property="storeupNumber" column="storeup_number"/>
+        <result property="discussNumber" column="discuss_number"/>
+        <result property="price" column="price"/>
+        <result property="onelimittimes" column="onelimittimes"/>
+        <result property="alllimittimes" column="alllimittimes"/>
+    </resultMap>
+
+    <select id="selectListView"
+            resultType="com.cl.entity.view.AgriculturalproductinformationView">
+
+        SELECT agriculturalproductinformation.* FROM agriculturalproductinformation agriculturalproductinformation
+        <where>1=1 ${ew.sqlSegment}</where>
+    </select>
+
+    <select id="selectView"
+            resultType="com.cl.entity.view.AgriculturalproductinformationView">
+        SELECT * FROM agriculturalproductinformation agriculturalproductinformation
+        <where>1=1 ${ew.sqlSegment}</where>
+    </select>
+
+    <!--
+        原子扣减库存：利用 WHERE alllimittimes >= #{qty} 实现乐观锁
+        - 不限库存商品（alllimittimes = -1）：不扣减保持 -1，number 保持 0
+        - 有限库存商品：alllimittimes 和 number 同时扣减
+        - 返回受影响行数：0 = 库存不足，1 = 扣减成功
+    -->
+    <update id="decreaseStock">
+        UPDATE agriculturalproductinformation
+        SET
+            alllimittimes = CASE
+                WHEN alllimittimes = -1 THEN -1
+                ELSE alllimittimes - #{qty}
+            END,
+            number = CASE
+                WHEN alllimittimes = -1 THEN number
+                ELSE number - #{qty}
+            END
+        WHERE id = #{id}
+        AND (alllimittimes >= #{qty} OR alllimittimes = -1)
+    </update>
+
+    <update id="increaseStock">
+        UPDATE agriculturalproductinformation
+        SET
+            alllimittimes = CASE
+                WHEN alllimittimes = -1 THEN -1
+                ELSE alllimittimes + #{qty}
+            END,
+            number = CASE
+                WHEN alllimittimes = -1 THEN number
+                ELSE number + #{qty}
+            END
+        WHERE id = #{id}
+    </update>
+
+
+</mapper>

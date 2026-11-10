@@ -1,0 +1,9 @@
+/* 个人资料编辑 · 引用后台共享样式 */
+@import "/styles/crud.wxss";
+
+.userInfo-from {
+  padding: 8rpx 28rpx 32rpx;
+}
+.btn-box {
+  margin-top: 48rpx;
+}

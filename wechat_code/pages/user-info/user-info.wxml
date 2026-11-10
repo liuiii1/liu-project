@@ -1,0 +1,76 @@
+<view class="register-container">
+<view class="content">
+<view class="userInfo-from">
+    <!-- userAccount，普,去  -->
+
+
+    <view class="item-box" wx:if="{{tableName=='user'}}"  >
+        <view class="item-label">用户账号</view>
+        <input  class="item-input" type="text"    disabled="true" placeholder="用户账号" model:value="{{userAccount}}" />
+    </view>
+    <!-- userName，普,$column.unique  -->
+
+
+    <view class="item-box" wx:if="{{tableName=='user'}}"  >
+        <view class="item-label">用户姓名</view>
+        <input  class="item-input" type="text"    placeholder="用户姓名" model:value="{{userName}}" />
+    </view>
+    <view class="item-box" wx:if="{{tableName=='user'}}" >
+        <view  class="item-label"   bindtap="headportraitTap"  >头像</view>
+        <image class="item-img"   bindtap="headportraitTap"   src="{{tempPathheadportrait}}" mode="aspectFill"></image>
+    </view>
+    <view class="item-box" wx:if="{{tableName=='user'}}">
+        <text   class="item-label"  >性别</text>
+        <picker   class="down-item-picker" mode="selector" range="{{genderList}}" value="{{genderIndex}}" bindchange="genderChange">
+            <view class="down-item-picker-text">{{genderList[genderIndex]?genderList[genderIndex]:userInfo.gender}}</view>
+        </picker>
+    </view>
+    <!-- phoneNumber，普,$column.unique  -->
+
+
+    <view class="item-box" wx:if="{{tableName=='user'}}"  >
+        <view class="item-label">电话号码</view>
+        <input  class="item-input" type="text"    placeholder="电话号码" model:value="{{phoneNumber}}" />
+    </view>
+    <view class="item-box" wx:if="{{tableName=='user'}}"  >
+        <view class="item-label">余额</view>
+        <input  class="item-input" type="text" placeholder="余额"  disabled="{{true}}" model:value="{{money}}" />
+    </view>
+    <!-- account，普,去  -->
+
+
+    <view class="item-box" wx:if="{{tableName=='supplier'}}"  >
+        <view class="item-label">账号</view>
+        <input  class="item-input" type="text"    disabled="true" placeholder="账号" model:value="{{account}}" />
+    </view>
+    <!-- name，普,$column.unique  -->
+
+
+    <view class="item-box" wx:if="{{tableName=='supplier'}}"  >
+        <view class="item-label">名称</view>
+        <input  class="item-input" type="text"    placeholder="名称" model:value="{{name}}" />
+    </view>
+    <!-- contactPhone，普,$column.unique  -->
+
+
+    <view class="item-box" wx:if="{{tableName=='supplier'}}"  >
+        <view class="item-label">联系电话</view>
+        <input  class="item-input" type="text"    placeholder="联系电话" model:value="{{contactPhone}}" />
+    </view>
+    <!-- address，普,$column.unique  -->
+
+
+    <view class="item-box" wx:if="{{tableName=='supplier'}}"  >
+        <view class="item-label">地址</view>
+        <input  class="item-input" type="text"    placeholder="地址" model:value="{{address}}" />
+    </view>
+<view class="btn-box">
+    <button class="save-btn" bindtap="saveTap">保存</button>
+    <button class="quite-btn" bindtap="quitTap">退出登录</button>
+
+</view>
+
+</view>
+
+</view>
+</view>

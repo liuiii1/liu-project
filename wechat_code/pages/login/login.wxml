@@ -1,0 +1,32 @@
+<view class="login-container">
+  <view wx:if="{{!faceShow}}" class="content">
+    <view class="avatar-box">
+      <image class='avatar' src="http://codegen.caihongy.cn/20201114/7856ba26477849ea828f481fa2773a95.jpg" mode="aspectFill" />
+    </view>
+    <view class="box">
+      <input type="text" placeholder="请输入账号" model:value="{{username}}" />
+    </view>
+    <view class="box">
+      <input type="password" placeholder="请输入密码" model:value="{{password}}" />
+    </view>
+
+
+    <view class="section">
+      <picker bindchange="bindPickerChange" value="{{loginType}}" range="{{selectType}}">
+        <view class="picker-text">
+          {{selectType[loginType]}}
+        </view>
+      </picker>
+
+    </view>
+
+    <button bindtap="login" data-tablename="${table.tableName}" class="login-btn">登录</button>
+
+
+    <view class="box2">
+      <view bindtap="registerUser" data-tablename="user" class="register-btn">注册用户</view>
+    </view>
+
+
+  </view>
+</view>

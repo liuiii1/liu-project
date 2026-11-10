@@ -1,0 +1,64 @@
+<view class="page">
+
+  <!-- 顶部余额卡片 -->
+  <view class="balance-card">
+    <view class="balance-label">当前账户余额（元）</view>
+    <view class="balance-value">
+      <text class="symbol">¥</text>
+      <text class="amount">{{user.money || '0.00'}}</text>
+    </view>
+  </view>
+
+  <!-- 充值金额标题 -->
+  <view class="section-title">充值金额</view>
+
+  <!-- 预设金额档位 -->
+  <view class="amount-grid">
+    <view 
+      wx:for="{{amounts}}" 
+      wx:key="value" 
+      class="amount-item {{selectedAmount === item.value ? 'active' : ''}}"
+      bindtap="selectAmount"
+      data-value="{{item.value}}"
+    >
+      <view class="amount-value">¥{{item.value}}</view>
+      <view class="amount-gift" wx:if="{{item.gift}}">送{{item.gift}}元</view>
+    </view>
+  </view>
+
+  <!-- 自定义金额 -->
+  <view class="custom-card">
+    <view class="custom-label">自定义金额</view>
+    <view class="custom-input-wrap">
+      <text class="custom-symbol">¥</text>
+      <input 
+        model:value="{{money}}" 
+        type="digit" 
+        class="custom-input" 
+        placeholder="请输入充值金额" 
+        placeholder-class="custom-ph"
+        bindinput="onCustomInput"
+      />
+    </view>
+  </view>
+
+  <!-- 提示文案 -->
+  <view class="tips">充值即代表同意《用户充值协议》，充值金额不可退款</view>
+
+  <!-- 底部提交按钮 -->
+  <button class="submit-btn" bindtap="onResetPass">
+    确认充值
+    <text wx:if="{{money > 0}}" class="submit-amount">（¥{{money}}）</text>
+  </button>
+
+  <!-- 成功弹窗 -->
+  <view wx:if="{{changeSuccess}}" class="success-mask" bindtap="back">
+    <view class="success-box" catchtap="">
+      <view class="success-icon">✓</view>
+      <view class="success-title">充值成功</view>
+      <view class="success-desc">账户已入账 ¥{{money}}</view>
+      <button class="success-btn" bindtap="back">完成</button>
+    </view>
+  </view>
+
+</view>

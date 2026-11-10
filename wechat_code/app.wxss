@@ -1,0 +1,267 @@
+@import "static/iconfig/font/iconfont.wxss";
+
+/* ============================================================
+   全局样式 · 田园绿设计系统 v2
+   - 渐变背景 + 有机纹理
+   - 分层阴影系统
+   - 入场动画 & 微动效
+   ============================================================ */
+page {
+  /* ===== 绿色体系 ===== */
+  --green-900: #1e5631;
+  --green-800: #256636;
+  --green-700: #2f7a3d;
+  --green-600: #3d8c4a;
+  --green-500: #4a9d5b;
+  --green-400: #64b072;
+  --green-300: #7cbf8b;
+  --green-200: #b0d9b8;
+  --green-100: #e7f2e0;
+  --green-50:  #f4f8f1;
+  --lime:      #b7d573;
+
+  /* ===== 文字 ===== */
+  --ink:       #1f2d20;
+  --ink-2:     #5c6b5a;
+  --ink-3:     #97a596;
+
+  /* ===== 功能色 ===== */
+  --line:      #e9efe5;
+  --bg:        #f3f7f0;
+  --price:     #d9481f;
+  --gold:      #c99a2e;
+  --danger:    #d9481f;
+
+  /* ===== 阴影层级（近大远小，越靠前越浓） ===== */
+  --shadow-xs:  0 2rpx 8rpx rgba(46, 92, 56, 0.04);
+  --shadow-sm:  0 4rpx 16rpx rgba(46, 92, 56, 0.06);
+  --shadow-md:  0 8rpx 28rpx rgba(46, 92, 56, 0.08);
+  --shadow-lg:  0 12rpx 40rpx rgba(46, 92, 56, 0.12);
+  --shadow-xl:  0 20rpx 60rpx rgba(46, 92, 56, 0.18);
+  --shadow-green: 0 12rpx 28rpx rgba(47, 122, 61, 0.3);
+
+  /* ===== 圆角令牌 ===== */
+  --radius-sm: 16rpx;
+  --radius-md: 20rpx;
+  --radius-lg: 24rpx;
+  --radius-xl: 28rpx;
+  --radius-full: 999rpx;
+
+  /* ===== 动画时长 ===== */
+  --dur-fast:   0.15s;
+  --dur-base:   0.25s;
+  --dur-slow:   0.4s;
+  --dur-leaf:   3s;
+
+  font-size: 28rpx;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+
+  /* ===== 渐变背景：顶部暖黄绿 → 底部浅绿 ===== */
+  background:
+    /* 顶部暖黄绿光晕 */
+    radial-gradient(ellipse 120% 40% at 50% -10%, rgba(183, 213, 115, 0.35) 0%, rgba(183, 213, 115, 0.12) 40%, transparent 70%),
+    /* 底部淡绿基底 */
+    linear-gradient(180deg, #f7faf2 0%, #f3f7f0 50%, #eef4ea 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* ===== 有机点阵纹理（极淡） ===== */
+page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+  background-image:
+    radial-gradient(rgba(46, 92, 56, 0.06) 1rpx, transparent 1rpx),
+    radial-gradient(rgba(183, 213, 115, 0.05) 1rpx, transparent 1rpx);
+  background-size: 40rpx 40rpx, 60rpx 60rpx;
+  background-position: 0 0, 20rpx 20rpx;
+}
+
+view, text, button, input {
+  box-sizing: border-box;
+}
+
+button::after {
+  border: none;
+}
+
+/* ============================================================
+   通用工具类
+   ============================================================ */
+
+/* 通用空状态 */
+.empty-tip {
+  text-align: center;
+  padding: 120rpx 0;
+  color: var(--ink-3);
+  font-size: 26rpx;
+}
+
+/* 卡片基础样式（可直接复用） */
+.card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.card-elevated {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* 胶囊按钮基础 */
+.btn-pill {
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  transition: all var(--dur-fast) ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--green-600), var(--green-800));
+  color: #ffffff;
+  box-shadow: var(--shadow-green);
+}
+
+.btn-primary:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+}
+
+/* ============================================================
+   入场动画（staggered reveal）
+   使用：给需要入场动画的元素加 .fade-in-up 类
+   延迟用 .delay-1 / .delay-2 / .delay-3 / .delay-4
+   ============================================================ */
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(24rpx);
+  animation: fadeInUp var(--dur-slow) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.40s; }
+.delay-6 { animation-delay: 0.48s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 从左侧淡入 */
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-20rpx);
+  animation: fadeInLeft var(--dur-slow) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 缩放淡入 */
+.fade-in-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeInScale var(--dur-slow) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================================
+   微交互：卡片按压态
+   ============================================================ */
+
+.press-card {
+  transition: transform var(--dur-base) cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow var(--dur-base) ease;
+}
+
+.press-card:active {
+  transform: translateY(-2rpx) scale(0.98);
+  box-shadow: var(--shadow-sm);
+}
+
+.press-btn {
+  transition: all var(--dur-fast) ease;
+}
+
+.press-btn:active {
+  transform: scale(0.94);
+  opacity: 0.9;
+}
+
+/* ============================================================
+   装饰元素：浮动光点 / 叶子
+   ============================================================ */
+
+.float-leaf {
+  animation: floatLeaf var(--dur-leaf) ease-in-out infinite;
+}
+
+@keyframes floatLeaf {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12rpx) rotate(6deg);
+  }
+}
+
+/* 呼吸光晕效果 */
+.pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(74, 157, 91, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 16rpx rgba(74, 157, 91, 0);
+  }
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: linear-gradient(135deg, var(--green-600), var(--green-800));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

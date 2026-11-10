@@ -1,0 +1,78 @@
+
+<wxs src="../../utils/formatMoney.wxs" module="fm" />
+<view class="order-page">
+    <view class="tabs-bar">
+        <view 
+            class="tab-item {{activeTab === index ? 'active' : ''}}" 
+            wx:for="{{tabs}}" 
+            wx:key="index"
+            data-index="{{index}}"
+            bindtap="onTabCLick"
+        >
+            <text>{{item.title}}</text>
+            <view class="tab-underline"></view>
+        </view>
+    </view>
+    <scroll-view scroll-y="true" class="order-scroll" bindscrolltolower="onReachBottom">
+        <view wx:if="{{curList.length === 0}}" class="empty-tip">暂无订单</view>
+        <view class="goods-item" wx:for="{{curList}}" wx:key="id">
+            <view class="status-orderId">
+                <view class="{{item.status=='未支付'?'text-red':'text-green'}}">{{item.status}}</view>
+                <text wx:if="{{item.sfsh=='待审核'&&item.status=='已收货'}}" class="text-red">退货审核中</text>
+                <text wx:if="{{item.sfsh=='待审核'&&item.status=='已支付'}}" class="text-red">退款审核中</text>
+                <text wx:if="{{item.sfsh=='是'&&item.status=='已收货'}}"  class="text-red">退货成功</text>
+                <view class="orderId">{{item.orderid}}</view>
+            </view>
+            <view class="order-content">
+                <view class="order-model">
+                    <image class="order-img" src="{{baseURL+item.picture}}" mode="aspectFit" />
+                    <view class="order-info">
+                        <view class="name">{{item.goodname}}</view>
+                        <view class="buy-num">x{{item.buynumber}}</view>
+                        <view class="price">￥{{fm.f(item.price)}}<text class="price-unit">/斤</text></view>
+                    </view>
+                </view>
+                <view class="user-info">
+                    <view wx:if="{{item.consignee}}">收货人：{{item.consignee}}</view>
+                    <view wx:if="{{item.tel}}">电话：{{item.tel}}</view>
+                    <view wx:if="{{item.address}}">地址：{{item.address}}</view>
+                    <view wx:if="{{item.addtime}}">下单时间：{{item.addtime}}</view>
+                    <view>备注：{{item.remark}}</view>
+                    <view>合计：{{fm.f(item.total?item.total:item.price)}}{{item.total==null?'积分':''}}</view>
+                </view>
+                <view class="operate-btn" wx:if="{{item.status=='未支付'}}">
+                    <view class="btn btn-primary" data-item="{{item}}" bind:tap="payTap">支付</view>
+                    <view class="btn" data-item="{{item}}" bind:tap="cancelOrderTap">取消订单</view>
+                </view>
+                <view class="operate-btn" wx:if="{{item.status=='已收货'}}">
+                    <view class="btn btn-primary" wx:if="{{item.sfsh!='待审核'}}" data-item="{{item}}" bind:tap="returnGood">退货</view>
+                    <view class="btn" wx:if="{{item.canComment !== false}}" data-item="{{item}}" bind:tap="orderDiscuss">评价</view>
+                </view>
+                <view class="operate-btn" wx:if="{{item.status=='已支付'}}">
+                    <view class="btn btn-primary" wx:if="{{item.sfsh!='待审核'}}" data-item="{{item}}" bind:tap="confirmReceive">确认收货</view>
+                    <view class="btn" wx:if="{{item.sfsh!='待审核'}}" data-item="{{item}}" bind:tap="refundPriceClick">申请退款</view>
+                    <view class="btn" wx:if="{{item.logistics}}" data-item="{{item}}" bind:tap="logisticsTap">查看物流</view>
+                </view>
+                <view class="operate-btn" wx:if="{{item.status=='已退款'}}">
+                    <view class="btn">已退款</view>
+                </view>
+                <view class="operate-btn" wx:if="{{item.status=='已取消'}}">
+                    <view class="btn">已取消</view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+
+    <!-- 退款/退货理由弹窗 -->
+    <view class="modal-mask" wx:if="{{showReasonModal}}" bindtap="closeReasonModal">
+        <view class="modal-dialog" catchtap="stopBubble">
+            <view class="modal-title">{{reasonModalTitle}}</view>
+            <textarea class="modal-textarea" placeholder="{{reasonModalPlaceholder}}" maxlength="200"
+                value="{{reasonText}}" bindinput="onReasonInput" auto-height />
+            <view class="modal-footer">
+                <view class="modal-btn modal-btn-cancel" bindtap="closeReasonModal">取消</view>
+                <view class="modal-btn modal-btn-confirm" bindtap="submitReason">提交申请</view>
+            </view>
+        </view>
+    </view>
+</view>

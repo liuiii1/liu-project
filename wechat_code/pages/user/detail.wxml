@@ -1,0 +1,65 @@
+<view class="detail-container" >
+<view class="content"   bind:tap="authTap">
+<swiper indicator-dots="{{false}}" autoplay="{{false}}" interval="{{5000}}" class="swiper" vertical="{{false}}" interval="{{5000}}" duration="{{500}}"  indicator-color='#f56c6c30'   indicator-active-color="#f56c6c"   autoplay="{{false}}"  circular="{{false}}">
+<swiper-item class="swiper-item"  wx:for="{{picture}}"   wx:key="index">
+    <image src="{{baseURL+item}}" mode="aspectFit"   class="swiper-img"></image>
+    <view   wx:if="$conf.menu.flag"  class="swiper-title">{{item.title}}</view>
+</swiper-item>
+</swiper>
+<view class="detail-box">
+
+
+
+<view class="detail-item-box" >
+<view class="detail-item-label">用户姓名：</view>
+<view class="detail-item-text">{{detailList.userName}}</view>
+</view>
+
+
+<view class="detail-item-box">
+<view class="detail-item-label">头像：</view>
+<image class="detail-detail-img-img" wx:if="{{detailList.headportrait}}"  src="{{baseURL+picture[0]}}"></image>
+</view>
+
+<view class="detail-item-box" >
+<view class="detail-item-label">性别：</view>
+<view class="detail-item-text">{{detailList.gender}}</view>
+</view>
+
+
+
+<view class="detail-item-box" >
+<view class="detail-item-label">电话号码：</view>
+<view class="detail-item-text">{{detailList.phoneNumber}}</view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+</view>
+
+<view class="operate-box">
+
+
+
+
+
+
+
+
+</view>
+
+</view>
+
+
+
+
+</view>

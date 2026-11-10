@@ -1,0 +1,87 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< com.cl:server_code >-------------------------
+[INFO] Building springboot-schema 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:2.2.2.RELEASE:run (default-cli) > test-compile @ server_code >>>
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/yaml/snakeyaml/1.25/snakeyaml-1.25.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/springframework/boot/spring-boot-starter-test/2.2.2.RELEASE/spring-boot-starter-test-2.2.2.RELEASE.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/springframework/boot/spring-boot-test-autoconfigure/2.2.2.RELEASE/spring-boot-test-autoconfigure-2.2.2.RELEASE.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/springframework/boot/spring-boot-test/2.2.2.RELEASE/spring-boot-test-2.2.2.RELEASE.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/junit/jupiter/junit-jupiter/5.5.2/junit-jupiter-5.5.2.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/junit/jupiter/junit-jupiter-params/5.5.2/junit-jupiter-params-5.5.2.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/mockito/mockito-junit-jupiter/3.1.0/mockito-junit-jupiter-3.1.0.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/mockito/mockito-core/3.1.0/mockito-core-3.1.0.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/net/bytebuddy/byte-buddy/1.10.4/byte-buddy-1.10.4.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/net/bytebuddy/byte-buddy-agent/1.10.4/byte-buddy-agent-1.10.4.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/springframework/spring-test/5.2.2.RELEASE/spring-test-5.2.2.RELEASE.jar
+Downloading from alimaven: http://maven.aliyun.com/nexus/content/groups/public/org/xmlunit/xmlunit-core/2.6.3/xmlunit-core-2.6.3.jar
+[WARNING] Failed to write tracking file 'D:\Maven\apache-maven-3.6.1\conf\maven-repository\org\yaml\snakeyaml\1.25\snakeyaml-1.25.jar.lastUpdated'
+java.io.FileNotFoundException: D:\Maven\apache-maven-3.6.1\conf\maven-repository\org\yaml\snakeyaml\1.25\snakeyaml-1.25.jar.lastUpdated (¾Ü¾ø·ÃÎÊ¡£)
+    at java.io.RandomAccessFile.open0 (Native Method)
+    at java.io.RandomAccessFile.open (RandomAccessFile.java:344)
+    at java.io.RandomAccessFile.<init> (RandomAccessFile.java:259)
+    at java.io.RandomAccessFile.<init> (RandomAccessFile.java:213)
+    at org.eclipse.aether.internal.impl.DefaultTrackingFileManager.update (DefaultTrackingFileManager.java:84)
+    at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.write (DefaultUpdateCheckManager.java:529)
+    at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.touchArtifact (DefaultUpdateCheckManager.java:476)
+    at org.eclipse.aether.internal.impl.DefaultArtifactResolver.evaluateDownloads (DefaultArtifactResolver.java:636)
+    at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads (DefaultArtifactResolver.java:545)
+    at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve (DefaultArtifactResolver.java:449)
+    at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts (DefaultArtifactResolver.java:261)
+    at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveDependencies (DefaultRepositorySystem.java:353)
+    at org.apache.maven.project.DefaultProjectDependenciesResolver.resolve (DefaultProjectDependenciesResolver.java:184)
+    at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.getDependencies (LifecycleDependencyResolver.java:224)
+    at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.resolveProjectDependencies (LifecycleDependencyResolver.java:136)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.ensureDependenciesAreResolved (MojoExecutor.java:355)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:313)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.executeForkedExecutions (MojoExecutor.java:448)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:311)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:568)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:361)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.746 s
+[INFO] Finished at: 2026-09-02T20:21:45+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] java.io.FileNotFoundException: D:\Maven\apache-maven-3.6.1\conf\maven-repository\org\yaml\snakeyaml\1.25\snakeyaml-1.25.jar.lastUpdated (¾Ü¾ø·ÃÎÊ¡£)
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.

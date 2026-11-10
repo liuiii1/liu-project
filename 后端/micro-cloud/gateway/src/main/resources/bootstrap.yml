@@ -1,0 +1,67 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.241.100:8848
+      config:
+        server-addr: 192.168.241.100:8848
+        file-extension: yaml
+    gateway:
+      # discovery.locator 默认会为 Nacos 每个服务生成/{serviceId}/**路由，
+      # 这会把 /{serviceId}/rpc/** 等内部 Feign 端点也暴露出去，禁止使用。
+      # 所有外部路由必须显式写在下方 routes 中，内部端点由 RpcDenyGlobalFilter 二次拦截。
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: true
+      # 全局跨域
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "*"
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowed-headers: "*"
+            allow-credentials: false
+      routes:
+        # 用户服务：登录注册/用户/地址/文件上传/站点配置/菜单/供应商
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/project/users/**,/project/user/**,/project/address/**,/project/file/**,/project/config/**,/project/menu/**,/project/supplier/**
+          filters:
+            - StripPrefix=1
+        # 商品服务：农产品/分类/资讯/收藏
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/project/agriculturalproductinformation/**,/project/productcategory/**,/project/news/**,/project/storeup/**
+          filters:
+            - StripPrefix=1
+        # 购物车服务
+        - id: cart-service
+          uri: lb://cart-service
+          predicates:
+            - Path=/project/cart/**
+          filters:
+            - StripPrefix=1
+        # 订单服务：订单/评论/菜数据统计
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/project/orders/**,/project/discussagriculturalproductinformation/**,/project/caidata/**
+          filters:
+            - StripPrefix=1
+
+logging:
+  level:
+    org.springframework.cloud.gateway: info

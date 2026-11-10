@@ -1,0 +1,46 @@
+/* ============================================================
+   忘记密码页 · 田园绿设计系统
+   ============================================================ */
+.forgot-container {
+  min-height: 100vh;
+  background: linear-gradient(170deg, #358a48 0%, #2f7a3d 45%, #256b33 100%);
+  padding: 120rpx 48rpx 60rpx;
+  box-sizing: border-box;
+}
+.forgot-content {
+  background: #ffffff;
+  border-radius: 32rpx;
+  padding: 56rpx 40rpx 48rpx;
+  box-shadow: 0 24rpx 60rpx rgba(20, 60, 30, 0.25);
+}
+.box {
+  display: flex;
+  align-items: center;
+  height: 96rpx;
+  background: var(--green-50);
+  border-radius: 999rpx;
+  padding: 0 36rpx;
+  margin-bottom: 28rpx;
+}
+.box input {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--ink);
+}
+.next-btn {
+  margin-top: 16rpx;
+  height: 92rpx;
+  line-height: 92rpx;
+  border-radius: 999rpx;
+  background: var(--green-700);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
+  box-shadow: 0 12rpx 28rpx rgba(47, 122, 61, 0.28);
+}
+.next-btn::after {
+  border: none;
+}
+.next-btn:active {
+  opacity: .88;
+}

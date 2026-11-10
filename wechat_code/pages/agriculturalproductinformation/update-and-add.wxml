@@ -1,0 +1,82 @@
+
+<view class="update-container">
+<view class="content">
+<view class="form-box">
+<view class="item-box">
+<view class="item-label">产品名称</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.productname==true}}"  placeholder="产品名称" model:value="{{productname}}" />
+</view>
+<view class="item-box">
+<view class="item-label" >产品分类</view>
+<picker   class="down-item-picker"     bindchange="productcategoryChange" value="{{productcategoryIndex}}"  range="{{productcategoryList}}">
+<view class="down-item-picker-text">
+{{productcategoryIndex||productcategoryIndex==0?productcategoryList[productcategoryIndex]:"请选择产品分类"}}
+</view>
+</picker>
+</view>
+<view class="item-box"    bindtap="uploadimage">
+<view   class="item-label">图片</view>
+<image  src="{{imagePath?imagePath:imgIcon}}" mode="aspectFill"  class="item-img"></image>
+</view>
+<view class="item-box">
+<view class="item-label">规格</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.specification==true}}"  placeholder="规格" model:value="{{specification}}" />
+</view>
+<view class="item-box">
+<view class="item-label">出产地</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.placeofproduction==true}}"  placeholder="出产地" model:value="{{placeofproduction}}" />
+</view>
+<view class="item-box">
+<view class="item-label">账号</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.account==true}}"  placeholder="账号" model:value="{{account}}" />
+</view>
+<view class="item-box">
+<view class="item-label">名称</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.name==true}}"  placeholder="名称" model:value="{{name}}" />
+</view>
+<view class="item-box">
+<view class="item-label">收藏数</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.storeupNumber==true}}"  placeholder="收藏数" model:value="{{storeupNumber}}" />
+</view>
+<view class="item-box">
+<view class="item-label">价格</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.price==true}}"  placeholder="价格" model:value="{{price}}" />
+</view>
+<view class="item-box">
+<view class="item-label">单限</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.onelimittimes==true}}"  placeholder="单限" model:value="{{onelimittimes}}" />
+</view>
+<view class="item-box">
+<view class="item-label">库存</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.alllimittimes==true}}"  placeholder="库存" model:value="{{alllimittimes}}" />
+</view>
+<view class="item-box"  >
+<view class="item-label">产品详情</view>
+<com-edit class="item_edit"> </com-edit>
+</view>
+
+<!-- 'discussagriculturalproductinformation -->
+<view class="item-box"  >
+<view class="item-label">评论内容</view>
+<com-edit  class="item_edit"> </com-edit>
+</view>
+</view>
+
+
+<view class="btn-box">
+<button     class="submit-btn" bindtap="submit">提交</button>
+</view>
+
+
+</view>
+
+</view>

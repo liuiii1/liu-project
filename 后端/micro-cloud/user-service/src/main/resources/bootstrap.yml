@@ -1,0 +1,48 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 9081
+
+spring:
+  application:
+    name: user-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.241.100:8848
+      config:
+        server-addr: 192.168.241.100:8848
+        file-extension: yaml
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/db_project?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 123456
+  servlet:
+    multipart:
+      max-file-size: 300MB
+      max-request-size: 300MB
+
+# ===== 静态资源 / 文件上传统一目录 =====
+# 所有服务共享 micro-cloud/upload/file/ 作为图片存储根目录
+# WebMvcConfig 把 /file/** 映射到此目录；FileController 上传也写入此目录
+app:
+  upload-path: d:/2026-competition/NEW/code/后端/micro-cloud/upload/file/
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  typeAliasesPackage: com.cl.entity
+  global-config:
+    id-type: 1
+    field-strategy: 1
+    db-column-underline: true
+    refresh-mapper: true
+    logic-delete-value: -1
+    logic-not-delete-value: 0
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'

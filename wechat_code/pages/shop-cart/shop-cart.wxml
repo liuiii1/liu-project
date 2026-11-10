@@ -1,0 +1,53 @@
+
+<wxs src="../../utils/formatMoney.wxs" module="fm" />
+<view class="cart-container">
+    <view wx:if="{{slideProductList.length === 0}}" class="cart-empty">
+        <view class="empty-text">购物车空空如也~</view>
+    </view>
+    <view wx:else class="cart-list">
+        <view class="product-box" wx:for="{{slideProductList}}" wx:key="id">
+            <!-- 商品主卡片 -->
+            <view class="product-card">
+                <!-- 复选框 -->
+                <view class="checkbox-box" data-index="{{index}}" data-select="{{item.select}}" bindtap="change">
+                    <view class="custom-checkbox {{item.select == 'success' ? 'checked' : ''}}">
+                        <text wx:if="{{item.select == 'success'}}">✓</text>
+                    </view>
+                </view>
+                <!-- 图片 -->
+                <image class="product-img" src="{{baseURL + item.picture}}" mode="aspectFill" />
+                <!-- 信息 -->
+                <view class="product-info">
+                    <view class="product-name">{{item.goodname}}</view>
+                    <view class="goods-price">￥{{fm.f(item.price)}}<text class="price-unit">/斤</text></view>
+                </view>
+            </view>
+            <!-- 数量条 + 删除 -->
+            <view class="action-bar">
+                <view class="num-control">
+                    <view class="num-btn" data-item="{{item}}" data-index="{{index}}" bindtap="subtraction">-</view>
+                    <view class="num-val">{{item.buynumber}}</view>
+                    <view class="num-btn" data-index="{{index}}" data-buynumber="{{item.buynumber}}" bindtap="addtion">+</view>
+                </view>
+                <view class="delete-btn" data-id="{{item.id}}" bindtap="deleteGoods">删除</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 底部结算栏 -->
+    <view wx:if="{{slideProductList.length > 0}}" class="cart-fixbar">
+        <view class="allSelect" data-select="{{allSelect}}" bindtap="allSelect">
+            <view class="custom-checkbox {{allSelect == 'success' ? 'checked' : ''}}">
+                <text wx:if="{{allSelect == 'success'}}">✓</text>
+            </view>
+            <text class="allSelect-text">全选</text>
+        </view>
+        <view class="count-area">
+            <text class="count-label">合计: </text>
+            <text class="count-num">￥{{count}}</text>
+        </view>
+        <view class="settle-btn" bindtap="settlementTap">
+            去结算({{buynumber}})
+        </view>
+    </view>
+</view>

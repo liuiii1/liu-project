@@ -1,0 +1,61 @@
+<wxs src="../../utils/formatMoney.wxs" module="fm" />
+<view class="storeup-container">
+  <view class="content">
+
+    <!-- 搜索栏 -->
+    <view class="search-bar">
+      <view class="search-input-wrap">
+        <text class="search-icon">🔍</text>
+        <input class="search-input" model:value="{{name}}" type="text" placeholder="搜索收藏的商品" placeholder-class="search-placeholder" />
+      </view>
+      <view class="search-btn" bind:tap="search">搜索</view>
+    </view>
+
+    <!-- 收藏标题 + 数量 -->
+    <view class="section-header">
+      <view class="section-title">
+        <text class="title-icon">💚</text>
+        <text class="title-text">我的收藏</text>
+        <text class="title-count">{{goodsListData.length}} 件</text>
+      </view>
+    </view>
+
+    <!-- 收藏商品列表 -->
+    <view class="goods-grid" wx:if="{{goodsListData.length > 0}}">
+      <view class="goods-card" wx:for="{{goodsListData}}" wx:key="id" data-item="{{item}}" bind:tap="detailBtn">
+        <view class="card-img-wrap">
+          <image class="card-img" src="{{baseURL+item.picture[0]}}" mode="aspectFill" />
+          <view class="fav-badge">
+            <text class="fav-icon">♥</text>
+          </view>
+          <view class="card-tag" wx:if="{{item.tablename}}">
+            {{item.tablename == 'agriculturalproductinformation' ? '农产品' : '商品'}}
+          </view>
+        </view>
+        <view class="card-info">
+          <view class="card-name">{{item.name}}</view>
+          <view class="card-bottom">
+            <view class="card-price" wx:if="{{item.price}}">
+              <text class="price-symbol">¥</text>
+              <text class="price-num">{{fm.f(item.price)}}</text>
+            </view>
+            <view class="card-price" wx:else>
+              <text class="price-na">查看详情</text>
+            </view>
+            <view class="remove-btn" catchtap="deleteBtn" data-id="{{item.id}}">
+              <text class="remove-icon">×</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:else>
+      <view class="empty-icon">🌱</view>
+      <view class="empty-title">还没有收藏哦</view>
+      <view class="empty-desc">去逛逛，发现喜欢的商品吧～</view>
+    </view>
+
+  </view>
+</view>

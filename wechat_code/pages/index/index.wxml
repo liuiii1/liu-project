@@ -1,0 +1,103 @@
+<wxs src="../../utils/formatMoney.wxs" module="fm" />
+<view class="index-container">
+    <view class="content">
+
+        <!-- 轮播 -->
+        <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" class="swiper" vertical="{{false}}" duration="{{500}}" indicator-color='rgba(255,255,255,0.4)' indicator-active-color="#ffffff" circular="{{true}}">
+            <swiper-item class="swiper-item" wx:for="{{swiperList}}" wx:if="{{index<=2}}" wx:key="index">
+                <image src="{{item.img}}" mode="aspectFill" class="swiper-img" bind:tap="onSwiperTap" data-item="{{item}}"></image>
+                <view class="swiper-title-wrap">
+                    <view class="swiper-title">{{item.title}}</view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <web-view wx:if="{{swiperUrl}}" src="{{swiperUrl}}"></web-view>
+
+        <!-- 九宫格菜单 -->
+        <view wx:if="{{true}}" class="grid-box">
+            <view wx:for="{{frontMenuList}}" wx:key="index" class="grid-box-item">
+                <view data-item="{{item}}" bind:tap="selectTap">
+                    <view class="grid-icon-wrap">
+                        <text class="grid-icon {{item.child[0].appFrontIcon}}" />
+                    </view>
+                    <text class="item-munu">{{item.child[0].menu}}</text>
+                </view>
+            </view>
+
+            <com-popup id="bottomFrame" className="buttom-popup">
+                <view bind:tap="cancelShow" style="display: flex;justify-content: flex-end;margin:20rpx 40rpx 0 0;">取消</view>
+                <view data-myitem="{{myitem}}" bind:tap="tomenuTap" wx:for="{{childItem}}" wx:for-item="myitem" wx:for-index="childindex" style="height: 100%;height: 88rpx;margin:20rpx 0;text-align: center;line-height: 88rpx;border-width: 0 0 2rpx 0;border-style: solid;border-color: #eee;" wx:key="childindex">
+                    {{myitem.menu}}
+                </view>
+            </com-popup>
+        </view>
+
+        <!-- 农产品信息 -->
+        <view class="section-block">
+            <view class="section-header">
+                <view class="section-title">
+                    <view class="title-icon">🌿</view>
+                    <text class="title-text">农产品信息</text>
+                </view>
+                <view class="section-more" bind:tap="checkMoreTap" data-tablename="agriculturalproductinformation">
+                    <text class="more-text">查看更多</text>
+                    <text class="more-arrow">→</text>
+                </view>
+            </view>
+
+            <view class="product-grid">
+                <view class="product-card" wx:for="{{homeagriculturalproductinformationList}}" catchtap="toDetail" data-item="{{item}}" wx:key="index" data-tablename="agriculturalproductinformation" data-id="{{item.id}}">
+                    <view class="product-img-wrap">
+                        <image class="product-img" src="{{item.image}}" mode="aspectFill" />
+                        <view class="product-tag">新鲜直达</view>
+                    </view>
+                    <view class="product-info">
+                        <view class="product-name">{{item.productname}}</view>
+                        <view class="product-origin">
+                            <text class="origin-icon">📍</text>
+                            <text class="origin-text">{{item.placeofproduction}}</text>
+                        </view>
+                        <view class="product-price-row">
+                            <text class="product-price">¥{{fm.f(item.price)}}</text>
+                            <text class="price-unit">/斤</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 农业新闻 -->
+        <view class="section-block news-section">
+            <view class="section-header">
+                <view class="section-title">
+                    <view class="title-icon news-icon">📰</view>
+                    <text class="title-text">农业新闻</text>
+                </view>
+                <view class="section-more" bind:tap="toNewsList">
+                    <text class="more-text">更多</text>
+                    <text class="more-arrow">→</text>
+                </view>
+            </view>
+
+            <view class="news-card">
+                <view class="news-list">
+                    <view wx:for="{{newsList}}" class="news-item" bind:tap="toNewsDetail" data-id="{{item.id}}" wx:key="index">
+                        <view class="news-date-col">
+                            <view class="news-day">{{index + 1 < 10 ? '0'+(index+1) : index+1}}</view>
+                            <view class="news-date-line"></view>
+                        </view>
+                        <view class="news-content">
+                            <view class="news-title">{{item.title}}</view>
+                            <view class="news-desc">{{item.introduction}}</view>
+                            <view class="news-meta">
+                                <text class="news-time" wx:if="{{item.addtime}}">{{item.addtime}}</text>
+                                <text class="news-read">查看详情 →</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+</view>

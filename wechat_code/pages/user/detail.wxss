@@ -1,0 +1,2 @@
+/* 用户详情 · 引用后台共享样式 */
+@import "/styles/crud.wxss";

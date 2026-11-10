@@ -1,0 +1,66 @@
+
+<view class="addr-page">
+  <!-- 空状态 -->
+  <view wx:if="{{addressList.length === 0}}" class="addr-empty">
+    <view class="empty-icon">📍</view>
+    <view class="empty-text">还没有收货地址</view>
+    <view class="empty-hint">添加一个地址，下单更便捷</view>
+    <view class="empty-add-btn" bindtap="addTap">+ 新增地址</view>
+  </view>
+
+  <!-- 地址列表 -->
+  <view wx:else class="addr-list">
+    <view class="addr-count">共 {{addressList.length}} 个收货地址</view>
+
+    <view class="addr-card" wx:for="{{addressList}}" wx:key="id">
+      <!-- 左侧定位图标竖条 -->
+      <view class="addr-icon-col">
+        <view class="addr-pin">📍</view>
+      </view>
+
+      <!-- 右侧内容 -->
+      <view class="addr-content" catchtap="selectAddress" data-item="{{item}}">
+        <!-- 姓名 + 电话 + 默认标签 -->
+        <view class="addr-top">
+          <view class="addr-name-row">
+            <text class="addr-name">{{item.name}}</text>
+            <text class="addr-phone">{{item.phone}}</text>
+            <text class="addr-default-tag" wx:if="{{item.isdefault == '是'}}">默认</text>
+          </view>
+        </view>
+
+        <!-- 地址文字 -->
+        <view class="addr-detail">
+          <text>{{item.address}}</text>
+        </view>
+
+        <!-- 操作条 -->
+        <view class="addr-actions">
+          <view class="addr-set-default" catchtap="setDefault" data-id="{{item.id}}" data-default="{{item.isdefault}}">
+            <text class="radio {{item.isdefault == '是' ? 'checked' : ''}}">{{item.isdefault == '是' ? '●' : '○'}}</text>
+            <text class="set-default-text">设为默认</text>
+          </view>
+
+          <view class="addr-action-right">
+            <view class="addr-btn addr-edit" catchtap="editTap" data-id="{{item.id}}">
+              <text class="btn-ico">✏️</text>
+              <text>编辑</text>
+            </view>
+            <view class="addr-btn addr-del" catchtap="delTap" data-id="{{item.id}}">
+              <text class="btn-ico">🗑️</text>
+              <text>删除</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部固定新增按钮 -->
+  <view wx:if="{{addressList.length > 0}}" class="addr-fixed-bar">
+    <view class="addr-add-fixed" bindtap="addTap">
+      <text class="add-plus">+</text>
+      <text>新增收货地址</text>
+    </view>
+  </view>
+</view>

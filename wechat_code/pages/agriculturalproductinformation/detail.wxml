@@ -1,0 +1,134 @@
+<wxs src="../../utils/formatMoney.wxs" module="fm" />
+<view class="agri-detail" bind:tap="authTap">
+
+  <!-- ========== 1. 顶部图片轮播 ========== -->
+  <swiper class="agri-swiper" indicator-dots="{{picture.length>1}}" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#b7d573" circular="{{true}}" autoplay="{{false}}" interval="{{5000}}" duration="{{500}}">
+    <swiper-item wx:for="{{picture}}" wx:key="index">
+      <image src="{{baseURL+item}}" mode="aspectFill" class="agri-swiper-img"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- ========== 2. 价格 + 收藏 ========== -->
+  <view class="agri-price-row">
+    <view class="agri-price-main">
+      <text class="agri-price-symbol">￥</text>
+      <text class="agri-price-num">{{fm.f(detailList.price)}}</text>
+      <text class="agri-price-unit">/斤</text>
+    </view>
+    <view class="agri-storeup" bind:tap="{{islike ? 'cancelLikeTap' : 'likeTap'}}">
+      <text class="agri-storeup-icon">{{islike ? '♥' : '♡'}}</text>
+      <text class="agri-storeup-text">{{islike ? '已收藏' : '收藏'}}</text>
+    </view>
+  </view>
+
+  <!-- ========== 3. 商品标题 ========== -->
+  <view class="agri-title">{{detailList.productname}}</view>
+
+  <!-- ========== 4. 商家信息 ========== -->
+  <view class="agri-merchant">
+    <text class="agri-merchant-label">商家：</text>
+    <text class="agri-merchant-name">{{detailList.name || detailList.account}}</text>
+  </view>
+
+  <!-- ========== 5. 四宫格属性 ========== -->
+  <view class="agri-info-grid">
+    <view class="agri-info-cell">
+      <text class="agri-info-icon">🏷</text>
+      <view class="agri-info-body">
+        <text class="agri-info-label">种类</text>
+        <text class="agri-info-value">{{detailList.productcategory}}</text>
+      </view>
+    </view>
+    <view class="agri-info-cell">
+      <text class="agri-info-icon">📍</text>
+      <view class="agri-info-body">
+        <text class="agri-info-label">产地</text>
+        <text class="agri-info-value">{{detailList.placeofproduction || '-'}}</text>
+      </view>
+    </view>
+    <view class="agri-info-cell">
+      <text class="agri-info-icon">📦</text>
+      <view class="agri-info-body">
+        <text class="agri-info-label">已售</text>
+        <text class="agri-info-value">{{detailList.storeupNumber || 0}} 件</text>
+      </view>
+    </view>
+    <view class="agri-info-cell">
+      <text class="agri-info-icon">🛒</text>
+      <view class="agri-info-body">
+        <text class="agri-info-label">库存</text>
+        <text class="agri-info-value">{{detailList.alllimittimes == -1 ? '充足' : (detailList.alllimittimes || 0)}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ========== 6. 规格 + 数量选择 ========== -->
+  <view class="agri-spec-row">
+    <view class="agri-spec-item" wx:if="{{detailList.specification}}">
+      <text class="agri-spec-label">规格</text>
+      <text class="agri-spec-value">{{detailList.specification}}</text>
+    </view>
+  </view>
+
+  <view class="agri-qty-row">
+    <view class="agri-qty-info">
+      <text class="agri-qty-label">选择数量</text>
+      <text wx:if="{{detailList.onelimittimes > 0 || detailList.alllimittimes > 0}}" class="agri-limit-tip">
+        限购 {{detailList.onelimittimes > 0 ? detailList.onelimittimes : detailList.alllimittimes}} 件
+      </text>
+    </view>
+    <view class="agri-qty-ctrl">
+      <view class="agri-qty-btn {{buyNumber <= 1 ? 'agri-qty-btn--disabled' : ''}}" data-op="-1" bindtap="changeBuyNumber">-</view>
+      <text class="agri-qty-num">{{buyNumber}}</text>
+      <view class="agri-qty-btn {{(detailList.onelimittimes > 0 && buyNumber >= detailList.onelimittimes) || (detailList.alllimittimes > 0 && buyNumber >= detailList.alllimittimes) || (detailList.number && buyNumber >= detailList.number) ? 'agri-qty-btn--disabled' : ''}}" data-op="1" bindtap="changeBuyNumber">+</view>
+    </view>
+  </view>
+
+  <!-- ========== 7. 商品评价 ========== -->
+  <view class="agri-comment-block">
+    <view class="agri-comment-header">
+      <view class="agri-comment-title">商品评价 <text class="agri-comment-count">({{commmentList.length}})</text></view>
+      <view class="agri-comment-more" bind:tap="addCommentap">写评价 ›</view>
+    </view>
+    <view wx:if="{{commmentList.length > 0}}" class="agri-comment-preview">
+      <view class="agri-comment-item" wx:for="{{commmentList}}" wx:for-index="idx" wx:key="index" wx:if="{{idx < 2}}">
+        <view class="agri-comment-user">
+          <image class="agri-comment-avatar" src="{{baseURL+item.avatarurl}}" mode="aspectFill"></image>
+          <text class="agri-comment-nick">{{item.nickname}}</text>
+        </view>
+        <rich-text nodes="{{item.content}}" class="agri-comment-content"></rich-text>
+        <!-- 追加评论（reply）单独显示，缩进一层 -->
+        <view wx:if="{{item.reply}}" class="agri-comment-reply-wrap">
+          <view class="agri-comment-reply-tag">追加评论</view>
+          <rich-text nodes="{{item.reply}}" class="agri-comment-reply-content"></rich-text>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="agri-comment-empty">暂无评价，快来抢沙发～</view>
+  </view>
+
+  <!-- ========== 8. 产品详情正文 ========== -->
+  <view class="agri-detail-block">
+    <view class="agri-block-title"><view class="agri-block-bar"></view>产品详情</view>
+    <rich-text nodes="{{detailList.productdetails}}" class="agri-detail-html"></rich-text>
+  </view>
+
+  <!-- 底部占位，避免被固定栏遮挡 -->
+  <view style="height: 140rpx;"></view>
+
+</view>
+
+<!-- ========== 9. 底部固定操作栏 ========== -->
+<view class="agri-bottom-bar">
+  <view class="agri-bar-icon" bind:tap="{{islike ? 'cancelLikeTap' : 'likeTap'}}">
+    <text class="agri-bar-iconfont">{{islike ? '♥' : '♡'}}</text>
+    <text class="agri-bar-label">收藏</text>
+  </view>
+  <view class="agri-bar-icon" bind:tap="onSHTap">
+    <text class="agri-bar-iconfont">🛒</text>
+    <text class="agri-bar-label">购物车</text>
+  </view>
+  <button wx:if="{{detailList.alllimittimes > 0 || detailList.alllimittimes == -1}}" class="agri-bar-btn agri-bar-btn--ghost" bind:tap="addCart">加入购物车</button>
+  <button wx:if="{{detailList.alllimittimes > 0 || detailList.alllimittimes == -1}}" class="agri-bar-btn agri-bar-btn--solid" bind:tap="onBuyTap">立即购买</button>
+  <button wx:else class="agri-bar-btn agri-bar-btn--disabled" disabled>已售罄</button>
+</view>

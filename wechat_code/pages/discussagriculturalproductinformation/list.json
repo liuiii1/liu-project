@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "com-date":"/component/com-date/com-date"
+  },
+  "navigationBarTitleText": "agriculturalproductinformation评论表",
+  "navigationBarBackgroundColor":"#2f7a3d",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+
+}

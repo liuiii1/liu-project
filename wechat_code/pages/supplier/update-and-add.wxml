@@ -1,0 +1,41 @@
+
+<view class="update-container">
+<view class="content">
+<view class="form-box">
+<view class="item-box">
+<view class="item-label">账号</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.account==true}}"  placeholder="账号" model:value="{{account}}" />
+</view>
+<view class="item-box">
+<view class="item-label">密码</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.password==true}}"  placeholder="密码" model:value="{{password}}" />
+</view>
+<view class="item-box">
+<view class="item-label">名称</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.name==true}}"  placeholder="名称" model:value="{{name}}" />
+</view>
+<view class="item-box">
+<view class="item-label">联系电话</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.contactPhone==true}}"  placeholder="联系电话" model:value="{{contactPhone}}" />
+</view>
+<view class="item-box">
+<view class="item-label">地址</view>
+<input  class="item-input"
+type="text"  disabled="{{ro.address==true}}"  placeholder="地址" model:value="{{address}}" />
+</view>
+
+</view>
+
+
+<view class="btn-box">
+<button     class="submit-btn" bindtap="submit">提交</button>
+</view>
+
+
+</view>
+
+</view>

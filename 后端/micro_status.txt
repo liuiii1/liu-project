@@ -1,0 +1,15 @@
+﻿=== user-service ===
+  controllers: AddressController.java, UserController.java, UsersController.java
+  java=99 mainClass=0 mapperXml=16 resourcesDir=True bootstrap=False pom=False
+=== product-service ===
+  controllers: AgriculturalproductinformationController.java, ProductcategoryController.java
+  java=98 mainClass=0 mapperXml=16 resourcesDir=True bootstrap=False pom=False
+=== cart-service ===
+  controllers: CartController.java
+  java=97 mainClass=0 mapperXml=16 resourcesDir=True bootstrap=False pom=False
+=== order-service ===
+  controllers: OrdersController.java
+  java=97 mainClass=0 mapperXml=16 resourcesDir=True bootstrap=False pom=False
+=== gateway ===
+  controllers: 
+  java=0 mainClass=0 mapperXml=0 resourcesDir=True bootstrap=False pom=False

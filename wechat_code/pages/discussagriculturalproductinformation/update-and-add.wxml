@@ -1,0 +1,21 @@
+
+<view class="comment-page">
+    <view class="comment-card">
+        <view class="card-header">
+            <text class="header-title">{{isAppendReview ? '追加评价' : '写评价'}}</text>
+            <text class="header-hint">{{isAppendReview ? '这是您的第 2 次评价' : '分享您的使用体验'}}</text>
+        </view>
+        <view wx:if="{{commentLimitReached}}" class="limit-tip">
+            <text class="limit-icon">⚠️</text>
+            <text class="limit-text">您已对该商品评价过 2 次（首次评价 + 追加评价），已达评价上限</text>
+        </view>
+        <view class="editor-wrapper">
+            <com-edit class="comment-editor"></com-edit>
+        </view>
+    </view>
+    <view class="submit-area">
+        <button class="submit-btn {{commentLimitReached ? 'disabled' : ''}}" bindtap="submit">
+            {{commentLimitReached ? '已达评价上限' : (isAppendReview ? '发布追加评价' : '发布评价')}}
+        </button>
+    </view>
+</view>

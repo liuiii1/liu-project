@@ -1,0 +1,65 @@
+<view class="user-container">
+  <view class="content">
+    <view wx:if="{{userInfo.id}}" class="user-info-box">
+      <view class="left" bind:tap="toDetail">
+
+
+
+        <view class="left-desc-box">
+          <view class="avatarBox">
+            <image class="left-img" src="{{baseURL+avatarurl}}"></image>
+            <view class="username" wx:if="{{nickname==userInfo.userAccount}}">{{userInfo.userAccount}}<text>{{userInfo.vip == '是' ? '(VIP)' : ''}}</text></view>
+            <view class="username" wx:if="{{nickname==userInfo.account}}">{{userInfo.account}}<text>{{userInfo.vip == '是' ? '(VIP)' : ''}}</text></view>
+          </view>
+
+          <view class="balance" wx:if="{{userInfo.money || userInfo.money ==0 }}">余额：{{userInfo.money}}</view>
+          <view class="integral" wx:if="{{userInfo.jf || userInfo.jf ==0 }}">积分：{{userInfo.jf}}</view>
+        </view>
+      </view>
+      <view class="right">
+        <text class="iconfont icon-shezhi1 icons" bind:tap="toDetail"></text>
+      </view>
+
+
+    </view>
+    <view wx:else="" class="no-login" bind:tap="tologin">
+      <view class="noLogin">登录/注册</view>
+    </view>
+
+
+    <view class="list-box" wx:if="{{userInfo.id}}">
+      <view class="list-item" wx:if="{{userInfo.id}}" bind:tap="userRecharge">
+        <view wx:if="{{true}}" class="iconfont list-img  icon-chongzhi1"></view>
+        <view class="list-text">project</view>
+        <view wx:if="{{true}}" class="list-icon ">></view>
+      </view>
+      <block wx:for="{{backMenuList}}" wx:key="index">
+        <!-- class="list-item" -->
+
+        <tree-menu listData="{{item}}" step="1" class="menuw">
+          <text wx:if="{{true}}" class="iconfont list-img {{item.fontClass}}"></text>
+        </tree-menu>
+      </block>
+      <view class="list-item" wx:if="{{userInfo.id}}" bind:tap="uppdatePassword">
+        <view wx:if="{{true}}" class="iconfont list-img icon-suoding1"></view>
+        <view class="list-text">密码修改</view>
+        <view wx:if="{{true}}" class="list-icon "></view>
+        <com-popup id="bottomFrame" className="buttom-popup" style="position: relative;">
+          <view style="padding: 40rpx 20rpx ;height: 100%;margin-top: 10%;">
+            <view bind:tap="cancelShow" style="position: absolute;top: 20rpx;right: 20rpx;">取消</view>
+            <input class="passwordInput" model:value="{{passWorded}}" type="password" placeholder="原密码" />
+            <input class="passwordInput" type="password" model:value="{{newPassword}}" placeholder="新密码" />
+            <input model:value="{{confirmPassword}}" class="passwordInput" type="password" placeholder="确认密码" />
+            <button bindtap="resetpasswordBtn" style="width: 200rpx;margin-top: 40rpx;background:#007aff ;color: #fff;">更新</button>
+          </view>
+          <view>
+
+          </view>
+        </com-popup>
+      </view>
+
+    </view>
+
+
+  </view>
+</view>

@@ -1,0 +1,198 @@
+/* ============================================================
+   账户充值页 · 田园绿设计系统
+   ============================================================ */
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 24rpx 24rpx 180rpx;
+  box-sizing: border-box;
+}
+.balance-card {
+  background: linear-gradient(135deg, #358a48 0%, #2f7a3d 55%, #256b33 100%);
+  border-radius: 28rpx;
+  padding: 44rpx 36rpx;
+  color: #ffffff;
+  box-shadow: 0 16rpx 40rpx rgba(47, 122, 61, 0.28);
+}
+.balance-label {
+  font-size: 26rpx;
+  opacity: .85;
+}
+.balance-value {
+  margin-top: 16rpx;
+  display: flex;
+  align-items: baseline;
+}
+.symbol {
+  font-size: 34rpx;
+  font-weight: 600;
+}
+.amount {
+  font-size: 72rpx;
+  font-weight: 700;
+  margin-left: 8rpx;
+  line-height: 1;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  margin: 40rpx 8rpx 24rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--ink);
+}
+.section-title::before {
+  content: '';
+  width: 8rpx;
+  height: 30rpx;
+  border-radius: 6rpx;
+  background: var(--green-700);
+  margin-right: 14rpx;
+}
+.amount-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.amount-item {
+  width: 31.5%;
+  box-sizing: border-box;
+  padding: 28rpx 0 22rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  border: 2rpx solid transparent;
+  box-shadow: 0 6rpx 20rpx rgba(46, 92, 56, 0.06);
+  text-align: center;
+  margin-bottom: 20rpx;
+  transition: all .18s ease;
+}
+.amount-item.active {
+  border-color: var(--green-700);
+  background: var(--green-50);
+}
+.amount-value {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--ink);
+}
+.amount-item.active .amount-value {
+  color: var(--green-700);
+}
+.amount-gift {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: var(--gold);
+}
+.custom-card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 6rpx 20rpx rgba(46, 92, 56, 0.06);
+  padding: 28rpx;
+}
+.custom-label {
+  font-size: 26rpx;
+  color: var(--ink-2);
+  margin-bottom: 16rpx;
+}
+.custom-input-wrap {
+  display: flex;
+  align-items: center;
+  background: var(--green-50);
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+  height: 88rpx;
+}
+.custom-symbol {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--green-700);
+  margin-right: 12rpx;
+}
+.custom-input {
+  flex: 1;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: var(--ink);
+}
+.custom-ph {
+  color: var(--ink-3);
+  font-size: 28rpx;
+  font-weight: 400;
+}
+.tips {
+  margin-top: 24rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: var(--ink-3);
+}
+.submit-btn {
+  position: fixed;
+  left: 24rpx;
+  right: 24rpx;
+  bottom: calc(32rpx + env(safe-area-inset-bottom));
+  height: 92rpx;
+  line-height: 92rpx;
+  border-radius: 999rpx;
+  background: var(--green-700);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
+  box-shadow: 0 12rpx 28rpx rgba(47, 122, 61, 0.3);
+}
+.submit-btn::after {
+  border: none;
+}
+.submit-amount {
+  font-weight: 400;
+  font-size: 26rpx;
+}
+.success-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 40, 22, 0.55);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.success-box {
+  width: 560rpx;
+  background: #ffffff;
+  border-radius: 32rpx;
+  padding: 56rpx 48rpx 40rpx;
+  text-align: center;
+}
+.success-icon {
+  width: 120rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  margin: 0 auto 24rpx;
+  border-radius: 50%;
+  background: var(--green-100);
+  color: var(--green-700);
+  font-size: 64rpx;
+  font-weight: 700;
+}
+.success-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: var(--ink);
+}
+.success-desc {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: var(--ink-2);
+}
+.success-btn {
+  margin-top: 40rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  border-radius: 999rpx;
+  background: var(--green-700);
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.success-btn::after {
+  border: none;
+}

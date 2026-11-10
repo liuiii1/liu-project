@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "com-date":"/component/com-date/com-date"
+  },
+  "navigationBarTitleText": "供应商",
+  "navigationBarBackgroundColor":"#2f7a3d",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+
+}

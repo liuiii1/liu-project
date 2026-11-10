@@ -1,0 +1,404 @@
+/* ============================================================
+   农产品详情页 · 田园绿设计系统
+   ============================================================ */
+.agri-detail {
+  background: var(--bg);
+  padding-bottom: calc(140rpx + env(safe-area-inset-bottom));
+}
+
+/* ---------- 顶部轮播 ---------- */
+.agri-swiper {
+  width: 100%;
+  height: 750rpx;
+  background: var(--green-50);
+}
+.agri-swiper-img {
+  width: 100%;
+  height: 750rpx;
+}
+
+/* ---------- 价格行 ---------- */
+.agri-price-row {
+  position: relative;
+  margin: -32rpx 24rpx 0;
+  background: #ffffff;
+  border-radius: 28rpx 28rpx 0 0;
+  padding: 32rpx 28rpx 20rpx;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  box-shadow: 0 -8rpx 28rpx rgba(46, 92, 56, 0.08);
+}
+.agri-price-main {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.agri-price-symbol {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: var(--price);
+}
+.agri-price-num {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: var(--price);
+  margin-left: 4rpx;
+  line-height: 1;
+}
+.agri-price-unit {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: var(--ink-2);
+  margin-left: 6rpx;
+  align-self: baseline;
+}
+.agri-price-vip {
+  margin-left: 16rpx;
+  padding: 4rpx 18rpx;
+  background: linear-gradient(90deg, #e9d38a, #c99a2e);
+  color: #ffffff;
+  font-size: 22rpx;
+  font-weight: 600;
+  border-radius: 999rpx;
+}
+.agri-storeup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rpx 16rpx;
+}
+.agri-storeup-icon {
+  font-size: 40rpx;
+  color: var(--ink-3);
+  line-height: 1;
+}
+.agri-storeup-text {
+  margin-top: 6rpx;
+  font-size: 20rpx;
+  color: var(--ink-3);
+}
+
+/* ---------- 商品标题 ---------- */
+.agri-title {
+  margin: 0 24rpx;
+  background: #ffffff;
+  padding: 0 28rpx 24rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* ---------- 商家信息 ---------- */
+.agri-merchant {
+  margin: 0 24rpx;
+  background: #ffffff;
+  padding: 0 28rpx 24rpx;
+  font-size: 26rpx;
+  color: var(--ink-2);
+  border-bottom: 1rpx solid var(--line);
+}
+.agri-merchant-label {
+  color: var(--ink-3);
+  margin-right: 8rpx;
+}
+.agri-merchant-name {
+  color: var(--green-700);
+  font-weight: 600;
+}
+
+/* ---------- 四宫格属性 ---------- */
+.agri-info-grid {
+  margin: 0 24rpx;
+  background: #ffffff;
+  padding: 20rpx 12rpx 24rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.agri-info-cell {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 16rpx 16rpx;
+  box-sizing: border-box;
+}
+.agri-info-icon {
+  font-size: 32rpx;
+  margin-right: 14rpx;
+  flex-shrink: 0;
+}
+.agri-info-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.agri-info-label {
+  font-size: 22rpx;
+  color: var(--ink-3);
+  line-height: 1.2;
+}
+.agri-info-value {
+  margin-top: 6rpx;
+  font-size: 26rpx;
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ---------- 规格行 ---------- */
+.agri-spec-row {
+  margin: 20rpx 24rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 24rpx 28rpx;
+}
+.agri-spec-item {
+  display: flex;
+  align-items: center;
+}
+.agri-spec-label {
+  font-size: 26rpx;
+  color: var(--ink-3);
+  flex-shrink: 0;
+  width: 120rpx;
+}
+.agri-spec-value {
+  font-size: 28rpx;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ---------- 数量选择 ---------- */
+.agri-qty-row {
+  margin: 16rpx 24rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 24rpx 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.agri-qty-info {
+  display: flex;
+  flex-direction: column;
+}
+.agri-qty-label {
+  font-size: 28rpx;
+  color: #2d3e2d;
+  font-weight: 600;
+}
+.agri-limit-tip {
+  font-size: 22rpx;
+  color: #e67e22;
+  margin-top: 6rpx;
+}
+.agri-qty-ctrl {
+  display: flex;
+  align-items: center;
+  background: #eaf0e4;
+  border-radius: 999rpx;
+  overflow: hidden;
+}
+.agri-qty-btn {
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #2f7a3d;
+  font-weight: 600;
+}
+.agri-qty-btn:active {
+  background: #d4e2cc;
+}
+.agri-qty-btn--disabled {
+  color: #ccc;
+  pointer-events: none;
+}
+.agri-qty-num {
+  width: 72rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2d3e2d;
+}
+
+/* ---------- 评价区 ---------- */
+.agri-comment-block {
+  margin: 20rpx 24rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 28rpx;
+}
+.agri-comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.agri-comment-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+}
+.agri-comment-title::before {
+  content: '';
+  width: 8rpx;
+  height: 30rpx;
+  border-radius: 6rpx;
+  background: var(--green-700);
+  margin-right: 14rpx;
+}
+.agri-comment-count {
+  font-weight: 400;
+  color: var(--ink-3);
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+.agri-comment-more {
+  font-size: 24rpx;
+  color: var(--green-700);
+  font-weight: 500;
+}
+.agri-comment-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--line);
+}
+.agri-comment-item:last-child {
+  border-bottom: none;
+}
+.agri-comment-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+.agri-comment-avatar {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: var(--green-100);
+  margin-right: 14rpx;
+}
+.agri-comment-nick {
+  font-size: 26rpx;
+  color: var(--ink);
+  font-weight: 600;
+}
+.agri-comment-content {
+  font-size: 26rpx;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+.agri-comment-reply-wrap {
+  margin-top: 14rpx;
+  padding: 16rpx 20rpx;
+  background: var(--green-50);
+  border-radius: 12rpx;
+}
+.agri-comment-reply-tag {
+  font-size: 22rpx;
+  color: var(--green-700);
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+.agri-comment-reply-content {
+  font-size: 25rpx;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.agri-comment-empty {
+  padding: 40rpx 0 20rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: var(--ink-3);
+}
+
+/* ---------- 详情正文 ---------- */
+.agri-detail-block {
+  margin: 20rpx 24rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 28rpx;
+}
+.agri-block-title {
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 20rpx;
+}
+.agri-block-bar {
+  width: 8rpx;
+  height: 30rpx;
+  border-radius: 6rpx;
+  background: var(--green-700);
+  margin-right: 14rpx;
+}
+.agri-detail-html {
+  font-size: 28rpx;
+  color: var(--ink-2);
+  line-height: 1.8;
+  word-break: break-all;
+}
+
+/* ---------- 底部操作栏 ---------- */
+.agri-bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 14rpx 24rpx;
+  padding-bottom: calc(14rpx + env(safe-area-inset-bottom));
+  background: #ffffff;
+  box-shadow: 0 -8rpx 32rpx rgba(46, 92, 56, 0.10);
+}
+.agri-bar-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12rpx;
+  color: var(--ink-2);
+}
+.agri-bar-iconfont {
+  font-size: 36rpx;
+  line-height: 1;
+}
+.agri-bar-label {
+  margin-top: 4rpx;
+  font-size: 20rpx;
+}
+.agri-bar-btn {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 999rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+.agri-bar-btn::after {
+  border: none;
+}
+.agri-bar-btn--ghost {
+  background: #ffffff;
+  color: var(--green-700);
+  border: 2rpx solid var(--green-700);
+}
+.agri-bar-btn--solid {
+  background: var(--green-700);
+  color: #ffffff;
+}
+.agri-bar-btn--disabled {
+  background: #e3e8e1 !important;
+  color: var(--ink-3) !important;
+}

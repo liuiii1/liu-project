@@ -1,0 +1,154 @@
+/* ============================================================
+   资讯列表页 · 田园绿设计系统 v2
+   ============================================================ */
+.forumCenter-container {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.search {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--dur-base) ease;
+}
+
+.search-input {
+  flex: 1;
+  background: var(--green-50);
+  height: 72rpx;
+  border-radius: var(--radius-full);
+  padding: 0 28rpx 0 72rpx;
+  font-size: 28rpx;
+  color: var(--ink);
+  transition: all var(--dur-fast) ease;
+}
+
+.icons {
+  position: absolute;
+  left: 48rpx;
+  font-size: 30rpx;
+  color: var(--ink-3);
+  line-height: 72rpx;
+  z-index: 2;
+}
+
+.searchBtn {
+  margin-left: 16rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 36rpx;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--green-600), var(--green-800));
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 600;
+  box-shadow: var(--shadow-green);
+  transition: all var(--dur-fast) ease;
+}
+
+.searchBtn:active {
+  transform: scale(0.94);
+  opacity: 0.9;
+}
+
+.content {
+  padding: 24rpx;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 8rpx 8rpx 20rpx;
+}
+
+.title::before {
+  content: '';
+  width: 8rpx;
+  height: 32rpx;
+  border-radius: 6rpx;
+  background: linear-gradient(180deg, var(--green-500), var(--green-800));
+  margin-right: 16rpx;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  transition: transform var(--dur-base) cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow var(--dur-base) ease;
+}
+
+.list-item:active {
+  transform: translateY(-2rpx) scale(0.98);
+  box-shadow: var(--shadow-sm);
+}
+
+.left {
+  width: 180rpx;
+  height: 140rpx;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+  background: var(--green-50);
+}
+
+.right {
+  flex: 1;
+  min-width: 0;
+  margin-left: 24rpx;
+  height: 140rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right > view:first-child {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.publishdate {
+  font-size: 22rpx;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+}
+
+.publishdate::before {
+  content: '📅';
+  margin-right: 6rpx;
+  font-size: 20rpx;
+}
+
+.nodata {
+  text-align: center;
+  padding: 120rpx 0;
+  color: var(--ink-3);
+  font-size: 26rpx;
+}

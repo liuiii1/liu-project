@@ -1,0 +1,23 @@
+<view>
+  <view class="content">
+    <view class="container">
+      <view style="width: 100%;height: 60px;text-align: center;line-height: 40px;font-weight: 600;font-size: 18px;">{{detail.title}}</view>
+      <!-- 点赞收藏盒子 -->
+      <view class="storeUp_thumbsUp_maxBox">
+      </view>
+      <view class="detail-list-item">
+        <view class="lable">简介：</view>
+        <view class="introduction">{{detail.introduction}}</view>
+      </view>
+
+      <view class="detail-list-item">
+        <view class="lable">内容：</view>
+        <view class="introduction">
+          <rich-text nodes="{{detail.content}}" style="letter-spacing: 2px; line-height: 50rpx; width: 96vw;" />
+
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>

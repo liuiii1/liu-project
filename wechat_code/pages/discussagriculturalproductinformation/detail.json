@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "rating":"/component/rating/index",
+    "com-video": "/component/com-video/com-video",
+    "com-popup": "/component/com-popup/com-popup"
+  },
+  "navigationBarTitleText": "agriculturalproductinformation评论表",
+  "navigationBarBackgroundColor":"#2f7a3d",
+  "navigationBarTextStyle": "white"
+}

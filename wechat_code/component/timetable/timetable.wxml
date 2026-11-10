@@ -1,0 +1,29 @@
+<view class="timetable">
+    <view class="header">
+      <view class="header-item" wx:for="{{week}}" wx:key="item" style="color:{{currentWeekIndex === index ? '#4070FF':'unset'}};"  >{{ item }}</view>
+    </view>
+
+    <view class="main">
+      <view class="row" wx:for="{{timetableType}}" wx:key="index">
+        <view class="time-item" >
+          <view class="index">{{ item.index }}</view>
+          <view class="time">{{ item.name }}</view>
+		  <!-- <view class="time">{{ jiaoshi. }}</view> -->
+        </view>
+      </view>
+
+      <view class="course-container">
+        <view class="week"wx:for-item="week" wx:for-index="weekIndex" wx:for="{{mergeList}}" wx:key="weekIndex"  >
+          <view class="courseList"wx:for-item="course" wx:for-index="courseIndex"  wx:for="{{week}}" wx:key="courseIndex" >
+            <view  wx:if="{{course.length > 0}}" bind:tap="handleCourseClick"  data-course="{{course}}" data-weekIndex="{{weekIndex}}"  data-courseIndex="{{courseIndex}}" 
+            style="background:{{course.backgroundColor}};height: {{(course.length * 160) + 'rpx'}};" 
+            class="course" >{{ course.name  }}
+            <view style="padding: 6px 0 0;font-size: 10px;">
+								<rich-text nodes="{{course.jiaoshi}}"></rich-text>
+							</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
