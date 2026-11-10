@@ -1,0 +1,280 @@
+/* ===== 页面容器 ===== */
+.page {
+  min-height: 100vh;
+  background: #fff;
+  padding-bottom: 40rpx;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+/* ===== 通用卡片基础 ===== */
+.login-card, .profile-card, .grid-card, .section-card {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== 未登录卡片 ===== */
+.login-card {
+  margin: 80rpx 24rpx 0;
+  padding: 48rpx 32rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  border: 1px solid #b7d573;
+  border-bottom-width: 10px;
+}
+.avatar-wrap {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #b7d57350;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.avatar-wrap.big {
+  width: 120rpx;
+  height: 120rpx;
+}
+.avatar-placeholder {
+  font-size: 56rpx;
+  color: #b7d573;
+}
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.login-text {
+  flex: 1;
+  margin-left: 28rpx;
+}
+.login-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+.login-sub {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+.login-arrow {
+  font-size: 48rpx;
+  color: #ccc;
+  margin-left: 8rpx;
+}
+
+/* ===== 用户资料卡 ===== */
+.profile-card {
+  margin: 10rpx 24rpx 0;
+  padding: 40rpx 32rpx 32rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  border: 1px solid #b7d573;
+  border-bottom-width: 10px;
+}
+.profile-top {
+  display: flex;
+  align-items: center;
+}
+.profile-info {
+  flex: 1;
+  margin-left: 24rpx;
+}
+.profile-name {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+}
+.vip-tag {
+  display: inline-block;
+  padding: 4rpx 14rpx;
+  background: #b2a4ec;
+  color: #fff;
+  font-size: 20rpx;
+  font-weight: 600;
+  border-radius: 20rpx;
+  margin-left: 8rpx;
+}
+.profile-edit {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+.setting-btn {
+  font-size: 42rpx;
+  color: #333;
+  padding: 8rpx;
+}
+
+/* ===== 统计行 ===== */
+.stats-row {
+  display: flex;
+  align-items: center;
+  margin-top: 28rpx;
+  padding-top: 24rpx;
+  border-top: 1px solid #b7d57350;
+}
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+.stat-num {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+}
+.stat-label {
+  font-size: 22rpx;
+  color: #666;
+  margin-top: 6rpx;
+}
+.stat-divider {
+  width: 1px;
+  height: 48rpx;
+  background: #b7d57350;
+}
+
+/* ===== 功能网格 ===== */
+.grid-card {
+  margin: 20rpx 24rpx 0;
+  padding: 32rpx 16rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #b7d573;
+  border-bottom-width: 10px;
+}
+.grid-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 0;
+}
+.grid-icon {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52rpx;
+  color: #b7d573;
+}
+.grid-img {
+  width: 60rpx;
+  height: 60rpx;
+}
+.grid-label {
+  font-size: 22rpx;
+  color: #515151;
+  margin-top: 12rpx;
+}
+
+/* ===== 区域卡片 ===== */
+.section-card {
+  margin: 20rpx 24rpx 0;
+  padding: 32rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  border: 1px solid #b7d573;
+  border-bottom-width: 10px;
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28rpx;
+}
+.section-title {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #b2a4ec;
+}
+.section-more {
+  font-size: 22rpx;
+  color: #666;
+}
+.order-grid {
+  display: flex;
+}
+.order-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.order-icon-wrap {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 8rpx;
+  background: #b7d57350;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+}
+.order-label {
+  font-size: 22rpx;
+  color: #515151;
+  margin-top: 10rpx;
+}
+
+/* ===== 弹窗（修改密码） ===== */
+.popup-box {
+  background: #fff;
+  border-radius: 8rpx 8rpx 0 0;
+  padding: 48rpx 40rpx 40rpx;
+  position: relative;
+}
+.popup-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+.popup-close {
+  position: absolute;
+  top: 32rpx;
+  right: 32rpx;
+  font-size: 36rpx;
+  color: #999;
+  width: 48rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+}
+.popup-input {
+  background: #eee;
+  border-radius: 0;
+  height: 72rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+}
+.ph {
+  color: #bbb;
+}
+.popup-btn {
+  margin-top: 24rpx;
+  background: #b7d573;
+  color: #fff;
+  border-radius: 0;
+  font-size: 28rpx;
+  font-weight: 600;
+  height: 72rpx;
+  line-height: 72rpx;
+  border: none;
+}
+.popup-btn::after {
+  border: none;
+}

@@ -1,0 +1,19 @@
+# ========== 环境变量隐私文件（重点！防止密钥上传）==========
+.env
+.env.*
+# 保留模板示例文件（可选，!代表不忽略）
+# !.env.example
+
+# ========== node依赖包（你截图大量acorn、eslint这类文件都在这里）==========
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-error.log*
+
+# ========== Mac系统自动生成的垃圾文件 .DS_Store ==========
+.DS_Store
+
+# ========== 其他常用忽略 ==========
+dist/
+build/
+.vscode/
